@@ -63,14 +63,12 @@ document.onkeyup = function(event) {
         // Need something to make computer choose again (on a loop) (or should that happen by default?)
     
     }
-    else if (userInput != computerChoice) {
+    else if (userInput !== computerChoice) {
         console.log("No match");
         console.log("Score: " + score);
         
         // If there are still more guesses left, continue counting down
         // UNTIL guesses left reaches 0
-
-        // !!! The code stops running somewhere in here with the guesses left nonsense
 
         // Okay, this works once and then jumps to 0
         // if (guessesLeft > 0) {
@@ -78,29 +76,31 @@ document.onkeyup = function(event) {
         // }
 
         // This doesn't work either, but the console does count guesses left down from 9
-        while (guessesLeft > 0) {
-            console.log("Guesses left: " + guessesLeft);
-            guessesLeft--;
-        }
+        // while (guessesLeft > 0) {
+        //     console.log("Guesses left: " + guessesLeft);
+        //     guessesLeft--;
+        // }
     
 
-        // guessesLeft--;
+        guessesLeft--;
         console.log("Guesses left: " + guessesLeft) // Right now, this works once and then jumps to -1
         updateGuessesLeft(); // Same as above
         
-        // Add the guessed letter to the list of guesses made
-        document.onkeyup = function(event) {
-            userInput.textContent = event.key;
-        };
+        // Add the guessed letter to the list of guesses made -- below is not correct
+        // document.onkeyup = function(event) {
+        //     userInput.textContent = event.key;
+        // };
         updateGuessesMade(); // How to write this function? The above doesn't work, but it might be because the code is erroring out above?
         
         // If guesses left runs down to 0, add 1 to losses
         // Above, when guesses left jumps to 0, this doesn't kick in--why? Maybe this is why the computer doesn't continue choosing new letters--the code is erroring out?
-        if (guessesLeft = 0) {
+        if (guessesLeft === 0) {
             losses++;
             console.log("You lose...");
             updateLosses();
         }
     }
+
+    // And then need everything to reset so that the score remains but guesses made and computer's choice reset
 
 };
