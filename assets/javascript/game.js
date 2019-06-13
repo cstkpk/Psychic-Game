@@ -66,8 +66,24 @@ document.onkeyup = function(event) {
     else if (userInput != computerChoice) {
         console.log("No match");
         console.log("Score: " + score);
-        guessesLeft--;
-        console.log("Guess left: " + guessLeft) // Right now, this works once and then jumps to -1
+        
+        // If there are still more guesses left, continue counting down
+        // UNTIL guesses left reaches 0
+
+        // Okay, this works once and then jumps to 0
+        // if (guessesLeft > 0) {
+        //     guessesLeft--;
+        // }
+
+        // This doesn't work either, but the console does count guesses left down from 9
+        while (guessesLeft > 0) {
+            console.log("Guesses left: " + guessesLeft);
+            guessesLeft--;
+        }
+    
+
+        // guessesLeft--;
+        console.log("Guesses left: " + guessesLeft) // Right now, this works once and then jumps to -1
         updateGuessesLeft(); // Same as above
         updateGuessesMade(); // How to write this function?
         
