@@ -54,10 +54,15 @@ function resetGuessesMade() {
     guessesMade.length = 0;
 }
 
-// Function that resets guesses used
-// function resetGuessesUsed() {
+
+// Function that resets guesses left
+// function resetGuessesLeft() {
 //     document.querySelector("#guesses-left").innerHTML = "Guesses left: " + guessesLeft;
 // }
+
+    function resetGuessesLeft() {
+        guessesLeft = 9;
+    }
 
 // THE GAME
 
@@ -84,7 +89,7 @@ document.onkeyup = function(event) {
         console.log("Score: " + score);
         updateScore();
         resetGuessesMade();
-        // resetGuessesUsed();
+        resetGuessesLeft();
         // // Need something to make computer choose again (on a loop) 
         // computerChoice.textContent = newComputerChoice();
     
@@ -109,7 +114,7 @@ document.onkeyup = function(event) {
             console.log("You lose...");
             updateLosses();
             resetGuessesMade();
-            // resetGuessesUsed();
+            resetGuessesLeft();
         }
     }
 
