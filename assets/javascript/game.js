@@ -17,12 +17,6 @@ console.log("Computer chooses: " + computerChoice);
         document.querySelector("#computer-choice").innerHTML = "Computer choice: " + computerChoice;
     }
 
-// Function that creates a new computer choice randomly from the options array
-// function newComputerChoice() {
-//     choices[Math.floor(Math.random() * choices.length)];
-//     document.querySelector("#computer-choice").innerHTML = "Computer choice: " + computerChoice;
-// }
-
 // Function that updates the score
 function updateScore() {
     document.querySelector("#score").innerHTML = "Score: " + score;
@@ -56,13 +50,21 @@ function resetGuessesMade() {
 
 
 // Function that resets guesses left
-// function resetGuessesLeft() {
-//     document.querySelector("#guesses-left").innerHTML = "Guesses left: " + guessesLeft;
+function resetGuessesLeft() {
+    guessesLeft = 9;
+}
+
+// Function that creates a new computer choice randomly from the options array
+// function newComputerChoice() {
+//     choices[Math.floor(Math.random() * choices.length)];
+//     document.querySelector("#computer-choice").innerHTML = "Computer choice: " + computerChoice;
 // }
 
-    function resetGuessesLeft() {
-        guessesLeft = 9;
-    }
+// This isn't working -- why?
+function resetComputerChoice() {
+    computerChoice = choices[Math.floor(Math.random() * choices.length)];
+    console.log("Computer chooses: " + computerChoice);
+}
 
 // THE GAME
 
@@ -92,6 +94,7 @@ document.onkeyup = function(event) {
         resetGuessesLeft();
         // // Need something to make computer choose again (on a loop) 
         // computerChoice.textContent = newComputerChoice();
+        // resetComputerChoice();
     
     }
     else if (userInput !== computerChoice) {
@@ -108,13 +111,14 @@ document.onkeyup = function(event) {
         console.log("Guesses made: " + guessesMade);
         updateGuessesMade();
         
-        // If guesses left runs down to 0, add 1 to losses
+        // If guesses left runs down to 0, add 1 to losses, reset guesses made, and reset computer choice
         if (guessesLeft === 0) {
             losses++;
             console.log("You lose...");
             updateLosses();
             resetGuessesMade();
             resetGuessesLeft();
+            // resetComputerChoice();
         }
     }
 
