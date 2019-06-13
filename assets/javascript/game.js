@@ -12,7 +12,7 @@ var guessesMade = [];
 var computerChoice = choices[Math.floor(Math.random() * choices.length)];
 // Let's see what the computer's choice is
 console.log("Computer chooses: " + computerChoice);
-    // Delete this later (don't actually want to show the computer's choice) -- Right now this doesn't work
+    // Delete this later (don't actually want to show the computer's choice)
     function showComputerChoice() {
         document.querySelector("#computer-choice").innerHTML = "Computer choice: " + computerChoice;
     }
@@ -60,7 +60,7 @@ document.onkeyup = function(event) {
         score++;
         console.log("Score: " + score);
         updateScore();
-        // Need something to make computer choose again (on a loop) 
+        // Need something to make computer choose again (on a loop) (or should that happen by default?)
     
     }
     else if (userInput != computerChoice) {
@@ -69,6 +69,8 @@ document.onkeyup = function(event) {
         
         // If there are still more guesses left, continue counting down
         // UNTIL guesses left reaches 0
+
+        // !!! The code stops running somewhere in here with the guesses left nonsense
 
         // Okay, this works once and then jumps to 0
         // if (guessesLeft > 0) {
@@ -85,9 +87,15 @@ document.onkeyup = function(event) {
         // guessesLeft--;
         console.log("Guesses left: " + guessesLeft) // Right now, this works once and then jumps to -1
         updateGuessesLeft(); // Same as above
-        updateGuessesMade(); // How to write this function?
+        
+        // Add the guessed letter to the list of guesses made
+        document.onkeyup = function(event) {
+            userInput.textContent = event.key;
+        };
+        updateGuessesMade(); // How to write this function? The above doesn't work, but it might be because the code is erroring out above?
         
         // If guesses left runs down to 0, add 1 to losses
+        // Above, when guesses left jumps to 0, this doesn't kick in--why? Maybe this is why the computer doesn't continue choosing new letters--the code is erroring out?
         if (guessesLeft = 0) {
             losses++;
             console.log("You lose...");
