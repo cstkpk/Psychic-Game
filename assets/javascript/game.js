@@ -44,8 +44,14 @@ function updateGuessesMade() {
 }
 
 // Function that resets guesses made
+// I think either of the two below will work?
+
+// function resetGuessesMade() {
+//     guessesMade.splice(0, guessesMade.length);
+// }
+
 function resetGuessesMade() {
-    document.querySelector("#guesses-made").innerHTML = "So far you've guessed: ";
+    guessesMade.length = 0;
 }
 
 // Function that resets guesses used
@@ -61,9 +67,6 @@ updateLosses();
 updateGuessesLeft();
 updateGuessesMade();
 showComputerChoice();
-resetGuessesMade();
-// resetGuessesUsed();
-// newComputerChoice();
 
 
 // When the user presses a key, it will run the following function:
