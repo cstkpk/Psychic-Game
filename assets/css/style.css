@@ -1,4 +1,23 @@
 body {
-    background-image: url("purple.jpg");
+    background-image: url("abstract-1963820_1920.jpg");
     background-size: cover; 
+}
+
+.text-style {
+    font-family: 'Amatic SC', cursive;
+    color: rgb(212, 198, 224);
+    text-shadow: 2px 2px rgb(45, 43, 48);
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+h6 {
+    font-size: 36px;
+}
+
+p {
+    font-size: 28px;
 }

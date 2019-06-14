@@ -7,11 +7,13 @@ var losses = 0;
 var guessesLeft = 9;
 var guessesMade = [];
 
+// var view = document.querySelector("#computer-choice");
+
 // Function that renders computer choice randomly from the options array
 var computerChoice = choices[Math.floor(Math.random() * choices.length)];
 // Let's see what the computer's choice is
 console.log("Computer chooses: " + computerChoice);
-    // Delete this later (don't actually want to show the computer's choice)
+// Delete this later (don't actually want to show the computer's choice)
     // function showComputerChoice() {
     //     document.querySelector("#computer-choice").innerHTML = "Computer choice: " + computerChoice;
     // }
@@ -38,12 +40,18 @@ function updateGuessesMade() {
 
 // Function that creates a new computer choice randomly from the options array
 function newComputerChoice() {
-    this.computerChoice = this.choices[Math.floor(Math.random() * this.choices.length)];
+    computerChoice = choices[Math.floor(Math.random() * choices.length)];
     console.log("New Computer Choice is: " + computerChoice);
+
+    // view.textContent = view.textContent + computerChoice;
+
+    return computerChoice;
     
     // Can't figure out how to get new computer guess to show on DOM (although don't need this for the homework--would just be nice to know how to do)
     // computerChoice.textContent = this.computerChoice;
 }
+
+
 
 // Function that resets the stats (other than score and losses, which accumulate through all rounds of the game)
 var reset = function() {
@@ -86,13 +94,14 @@ document.onkeyup = function(event) {
         console.log("Score: " + score);
         updateScore();
         reset();
-    
     }
+
+    // If the user's input doesn't match the computer's choice...
     else if (userInput !== computerChoice) {
         console.log("No match");
         console.log("Score: " + score);
         
-        // If there are still more guesses left, continue counting down until guesses left reaches 0
+        // and if there are still more guesses left, continue playing and counting down until guesses left reaches 0
         guessesLeft--;
         console.log("Guesses left: " + guessesLeft);
         updateGuessesLeft(); 
@@ -102,7 +111,7 @@ document.onkeyup = function(event) {
         console.log("Guesses made: " + guessesMade);
         updateGuessesMade();
         
-        // If guesses left runs down to 0, add 1 to losses, reset guesses made, and reset computer choice
+        // If guesses left runs down to 0, add 1 to losses, reset guesses made, guesses left, and computer choice
         if (guessesLeft === 0) {
             losses++;
             console.log("You lose...");
