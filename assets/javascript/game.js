@@ -7,13 +7,14 @@ var losses = 0;
 var guessesLeft = 9;
 var guessesMade = [];
 
+// Variable needed in case you want to view computer's choice on DOM
 // var view = document.querySelector("#computer-choice");
 
 // Function that renders computer choice randomly from the options array
 var computerChoice = choices[Math.floor(Math.random() * choices.length)];
 // Let's see what the computer's choice is
 console.log("Computer chooses: " + computerChoice);
-// Delete this later (don't actually want to show the computer's choice)
+// In case you want to view the computer's first choice on DOM
     // function showComputerChoice() {
     //     document.querySelector("#computer-choice").innerHTML = "Computer choice: " + computerChoice;
     // }
@@ -43,15 +44,11 @@ function newComputerChoice() {
     computerChoice = choices[Math.floor(Math.random() * choices.length)];
     console.log("New Computer Choice is: " + computerChoice);
 
+    // In case you want to view the computer's choice after reset as text on DOM
     // view.textContent = view.textContent + computerChoice;
 
-    return computerChoice;
-    
-    // Can't figure out how to get new computer guess to show on DOM (although don't need this for the homework--would just be nice to know how to do)
-    // computerChoice.textContent = this.computerChoice;
+    return computerChoice;  
 }
-
-
 
 // Function that resets the stats (other than score and losses, which accumulate through all rounds of the game)
 var reset = function() {
@@ -69,6 +66,7 @@ updateScore();
 updateLosses();
 updateGuessesLeft();
 updateGuessesMade();
+// Calling the function in case you want to view the computer's choice on DOM
 // showComputerChoice();
 
 // When the user presses a key, it will run the following function:
@@ -77,7 +75,7 @@ document.onkeyup = function(event) {
     
     // Let's see what the computer is seeing when we assign the event to a variable
     console.log("User Choice: " + userInput);
-    console.log("User type: " + typeof(userInput));
+    // console.log("User type: " + typeof(userInput));
     
     // LET THE LOGIC BEGIN
 
@@ -91,7 +89,6 @@ document.onkeyup = function(event) {
     else if (userInput === computerChoice) { 
         console.log("It's a match!");
         score++;
-        console.log("Score: " + score);
         updateScore();
         reset();
     }
@@ -99,16 +96,13 @@ document.onkeyup = function(event) {
     // If the user's input doesn't match the computer's choice...
     else if (userInput !== computerChoice) {
         console.log("No match");
-        console.log("Score: " + score);
         
         // and if there are still more guesses left, continue playing and counting down until guesses left reaches 0
         guessesLeft--;
-        console.log("Guesses left: " + guessesLeft);
         updateGuessesLeft(); 
         
         // Add the guessed letter to the list of guesses made
         guessesMade.push(" " + userInput);
-        console.log("Guesses made: " + guessesMade);
         updateGuessesMade();
         
         // If guesses left runs down to 0, add 1 to losses, reset guesses made, guesses left, and computer choice
