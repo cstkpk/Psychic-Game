@@ -12,9 +12,9 @@ var computerChoice = choices[Math.floor(Math.random() * choices.length)];
 // Let's see what the computer's choice is
 console.log("Computer chooses: " + computerChoice);
     // Delete this later (don't actually want to show the computer's choice)
-    function showComputerChoice() {
-        document.querySelector("#computer-choice").innerHTML = "Computer choice: " + computerChoice;
-    }
+    // function showComputerChoice() {
+    //     document.querySelector("#computer-choice").innerHTML = "Computer choice: " + computerChoice;
+    // }
 
 // Function that updates the score
 function updateScore() {
@@ -47,19 +47,9 @@ function updateGuessesMade() {
         this.computerChoice = this.choices[Math.floor(Math.random() * this.choices.length)];
         console.log("New Computer Choice is: " + computerChoice);
         
-        
+        // Can't figure out how to get new computer guess to show on DOM (although don't need this for the homework--would just be nice to know how to do)
+        // computerChoice.textContent = this.computerChoice;
     }
-
-// function newComputerChoice() {
-//     choices[Math.floor(Math.random() * choices.length)];
-//     document.querySelector("#computer-choice").innerHTML = "Computer choice: " + computerChoice;
-// }
-
-// This isn't working -- why?
-// function newComputerChoice() {
-//     computerChoice = choices[Math.floor(Math.random() * choices.length)];
-//     console.log("Computer chooses: " + computerChoice);
-// }
 
 // Function that resets the stats (other than score and losses, which accumulate through all rounds of the game)
 var reset = function() {
@@ -68,8 +58,6 @@ var reset = function() {
     updateGuessesLeft();
     updateGuessesMade();
     newComputerChoice();
-    // computerChoice = choices[Math.floor(Math.random() * choices.length)];
-    // newComputerChoice = computerChoice + newComputerChoice;
 }
 
 // THE GAME
@@ -79,7 +67,7 @@ updateScore();
 updateLosses();
 updateGuessesLeft();
 updateGuessesMade();
-showComputerChoice();
+// showComputerChoice();
 // newComputerChoice();
 
 
