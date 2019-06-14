@@ -1,5 +1,5 @@
 // Creates an array that lists out all of the possible choices for the computer
-var choices = ["a", "b", "c", "d", "e", "f"];
+var choices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 // We start the game with the following stats:
 var score = 0;
@@ -68,19 +68,26 @@ updateLosses();
 updateGuessesLeft();
 updateGuessesMade();
 // showComputerChoice();
-// newComputerChoice();
 
 
 // When the user presses a key, it will run the following function:
 document.onkeyup = function(event) {
     var userInput = event.key.toLowerCase();
-
+    
     // Let's see what the computer is seeing when we assign the event to a variable
     console.log("User Choice: " + userInput);
     console.log("User type: " + typeof(userInput));
+    
+    // LET THE LOGIC BEGIN
 
-    // Logic
-    if (userInput === computerChoice) {
+    // This is to check whether the user has typed an acceptable key
+    var acceptableKey = choices.includes(userInput);
+    if (!acceptableKey) {
+        console.log("That's not an acceptable key");
+    }
+
+    // If the user's input matches the computer's choice, their score will increase and the stats will reset
+    else if (userInput === computerChoice) { 
         console.log("It's a match!");
         score++;
         console.log("Score: " + score);
@@ -110,7 +117,5 @@ document.onkeyup = function(event) {
             reset();
         }
     }
-
-    // And then need everything to reset so that the score remains but guesses made and computer's choice reset
 
 };
