@@ -37,19 +37,13 @@ function updateGuessesMade() {
 }
 
 // Function that creates a new computer choice randomly from the options array
-// function newComputerChoice() {
-//     this.computerChoice = this.choices[Math.floor(Math.random() * this.choices.length)];
-//     newComputerChoice = computerChoice + newComputerChoice;
-//     document.querySelector("#computer-choice").innerHTML = "Computer choice " + computerChocie;
-// }
-
-    function newComputerChoice() {
-        this.computerChoice = this.choices[Math.floor(Math.random() * this.choices.length)];
-        console.log("New Computer Choice is: " + computerChoice);
-        
-        // Can't figure out how to get new computer guess to show on DOM (although don't need this for the homework--would just be nice to know how to do)
-        // computerChoice.textContent = this.computerChoice;
-    }
+function newComputerChoice() {
+    this.computerChoice = this.choices[Math.floor(Math.random() * this.choices.length)];
+    console.log("New Computer Choice is: " + computerChoice);
+    
+    // Can't figure out how to get new computer guess to show on DOM (although don't need this for the homework--would just be nice to know how to do)
+    // computerChoice.textContent = this.computerChoice;
+}
 
 // Function that resets the stats (other than score and losses, which accumulate through all rounds of the game)
 var reset = function() {
@@ -69,7 +63,6 @@ updateGuessesLeft();
 updateGuessesMade();
 // showComputerChoice();
 
-
 // When the user presses a key, it will run the following function:
 document.onkeyup = function(event) {
     var userInput = event.key.toLowerCase();
@@ -80,7 +73,7 @@ document.onkeyup = function(event) {
     
     // LET THE LOGIC BEGIN
 
-    // This is to check whether the user has typed an acceptable key
+    // This is to check whether the user has typed an acceptable key and to prevent non-acceptable keys from showing up on DOM
     var acceptableKey = choices.includes(userInput);
     if (!acceptableKey) {
         console.log("That's not an acceptable key");
@@ -104,7 +97,7 @@ document.onkeyup = function(event) {
         console.log("Guesses left: " + guessesLeft);
         updateGuessesLeft(); 
         
-        // Add the guessed letter to the list of guesses made -- below is not correct
+        // Add the guessed letter to the list of guesses made
         guessesMade.push(" " + userInput);
         console.log("Guesses made: " + guessesMade);
         updateGuessesMade();
