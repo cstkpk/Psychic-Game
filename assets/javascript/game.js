@@ -7,7 +7,6 @@ var losses = 0;
 var guessesLeft = 9;
 var guessesMade = [];
 
-
 // Function that renders computer choice randomly from the options array
 var computerChoice = choices[Math.floor(Math.random() * choices.length)];
 // Let's see what the computer's choice is
@@ -37,33 +36,29 @@ function updateGuessesMade() {
     document.querySelector("#guesses-made").innerHTML = "So far you've guessed: " + guessesMade; 
 }
 
-// Function that resets guesses made
-// I think either of the two below will work?
-
-// function resetGuessesMade() {
-//     guessesMade.splice(0, guessesMade.length);
-// }
-
-function resetGuessesMade() {
-    guessesMade.length = 0;
-}
-
-
-// Function that resets guesses left
-function resetGuessesLeft() {
-    guessesLeft = 9;
-}
-
 // Function that creates a new computer choice randomly from the options array
+function resetComputerChoice() {
+    this.computerChoice = this.choices[Math.floor(Math.random() * this.choices.length)];
+}
+
 // function newComputerChoice() {
 //     choices[Math.floor(Math.random() * choices.length)];
 //     document.querySelector("#computer-choice").innerHTML = "Computer choice: " + computerChoice;
 // }
 
 // This isn't working -- why?
-function resetComputerChoice() {
-    computerChoice = choices[Math.floor(Math.random() * choices.length)];
-    console.log("Computer chooses: " + computerChoice);
+// function resetComputerChoice() {
+//     computerChoice = choices[Math.floor(Math.random() * choices.length)];
+//     console.log("Computer chooses: " + computerChoice);
+// }
+
+// Function that resets the stats (other than score and losses, which accumulate through all rounds of the game)
+var reset = function() {
+    guessesLeft = 9;
+    guessesMade = [];
+    updateGuessesLeft();
+    updateGuessesMade();
+    resetComputerChoice();
 }
 
 // THE GAME
@@ -74,6 +69,7 @@ updateLosses();
 updateGuessesLeft();
 updateGuessesMade();
 showComputerChoice();
+// resetComputerChoice();
 
 
 // When the user presses a key, it will run the following function:
@@ -90,11 +86,7 @@ document.onkeyup = function(event) {
         score++;
         console.log("Score: " + score);
         updateScore();
-        resetGuessesMade();
-        resetGuessesLeft();
-        // // Need something to make computer choose again (on a loop) 
-        // computerChoice.textContent = newComputerChoice();
-        // resetComputerChoice();
+        reset();
     
     }
     else if (userInput !== computerChoice) {
@@ -116,9 +108,7 @@ document.onkeyup = function(event) {
             losses++;
             console.log("You lose...");
             updateLosses();
-            resetGuessesMade();
-            resetGuessesLeft();
-            // resetComputerChoice();
+            reset();
         }
     }
 
