@@ -98,7 +98,7 @@ document.onkeyup = function(event) {
         updateGuessesLeft(); 
         
         // Add the guessed letter to the list of guesses made -- below is not correct
-        guessesMade.push(userInput);
+        guessesMade.push(" " + userInput);
         console.log("Guesses made: " + guessesMade);
         updateGuessesMade();
         
