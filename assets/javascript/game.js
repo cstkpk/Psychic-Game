@@ -37,9 +37,18 @@ function updateGuessesMade() {
 }
 
 // Function that creates a new computer choice randomly from the options array
-function resetComputerChoice() {
-    this.computerChoice = this.choices[Math.floor(Math.random() * this.choices.length)];
-}
+// function newComputerChoice() {
+//     this.computerChoice = this.choices[Math.floor(Math.random() * this.choices.length)];
+//     newComputerChoice = computerChoice + newComputerChoice;
+//     document.querySelector("#computer-choice").innerHTML = "Computer choice " + computerChocie;
+// }
+
+    function newComputerChoice() {
+        this.computerChoice = this.choices[Math.floor(Math.random() * this.choices.length)];
+        console.log("New Computer Choice is: " + computerChoice);
+        
+        
+    }
 
 // function newComputerChoice() {
 //     choices[Math.floor(Math.random() * choices.length)];
@@ -47,7 +56,7 @@ function resetComputerChoice() {
 // }
 
 // This isn't working -- why?
-// function resetComputerChoice() {
+// function newComputerChoice() {
 //     computerChoice = choices[Math.floor(Math.random() * choices.length)];
 //     console.log("Computer chooses: " + computerChoice);
 // }
@@ -58,18 +67,20 @@ var reset = function() {
     guessesMade = [];
     updateGuessesLeft();
     updateGuessesMade();
-    resetComputerChoice();
+    newComputerChoice();
+    // computerChoice = choices[Math.floor(Math.random() * choices.length)];
+    // newComputerChoice = computerChoice + newComputerChoice;
 }
 
 // THE GAME
 
-// Calling functions to start the game.
+// Calling functions to start the game
 updateScore();
 updateLosses();
 updateGuessesLeft();
 updateGuessesMade();
 showComputerChoice();
-// resetComputerChoice();
+// newComputerChoice();
 
 
 // When the user presses a key, it will run the following function:
